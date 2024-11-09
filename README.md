@@ -148,6 +148,6 @@ Check out the [full blog post](--------------------------------) about the CI/CD
 ---
 
 ## Contact
-If you have any questions or suggestions, feel free to contact me at [ougabriel@gmail.com](mailto:ougabriel@gmail.com).
+If you have any questions or suggestions, feel free to contact me at [linkedin](www.linkedin.com/in/chidi-augustine-nwakpa).
 
 ```
