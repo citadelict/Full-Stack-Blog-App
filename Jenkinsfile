@@ -48,7 +48,7 @@ pipeline {
             steps {
                 script{
                 withDockerRegistry(credentialsId: 'dockerhub-cred', url: 'https://index.docker.io/v1/') {
-                sh "sudo docker build -t citatech/blog-app ."
+                sh "docker build -t citatech/blog-app ."
                 }
                 }
             }
@@ -62,7 +62,7 @@ pipeline {
             steps {
                 script{
                 withDockerRegistry(credentialsId: 'dockerhub-cred', url: 'https://hub.docker.com/') {
-                    sh "sudo docker push citatech/blog-app"
+                    sh "docker push citatech/blog-app"
                 }
                 }
             }
