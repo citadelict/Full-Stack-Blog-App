@@ -67,7 +67,24 @@ pipeline {
                 }
             }
         }
-    }
+
+        stage('K8s Deploy') {
+            steps {
+               withKubeCredentials(kubectlCredentials: [[caCertificate: '', clusterName: 'citatech-cluster', contextName: '', credentialsId: 'kubernetes-token', namespace: 'webapps', serverUrl: 'https://07BFA4BB86DD389D78BEB949BB0F943C.yl4.us-west-1.eks.amazonaws.com']]) {
+                    sh "kubectl apply -f deployment-service.yml"
+                    sleep 20
+                }
+            }
+        }
+        stage('Verify Deployment') {
+            steps {
+               withKubeCredentials(kubectlCredentials: [[caCertificate: '', clusterName: 'citatech-cluster', contextName: '', credentialsId: 'kubernetes-token', namespace: 'webapps', serverUrl: 'https://07BFA4BB86DD389D78BEB949BB0F943C.yl4.us-west-1.eks.amazonaws.com']]) {
+                    sh "kubectl get pods"
+                    sh "kubectl get service"
+                }
+            }
+        }
+    }  // Closing stages
 
     post {
         always {
@@ -106,4 +123,4 @@ pipeline {
             }
         }
     }
-}
+}  // Closing pipeline
